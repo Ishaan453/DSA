@@ -1,4 +1,4 @@
-**Node Class for Linked List**<br>
+## Node Class for Linked List<br>
 We create a structure node for the linked list with the necessary data variable and the next pointer. For Doubly Linked list we also need a pointer to previous node.
 ```cpp
 struct Node {
@@ -7,7 +7,7 @@ struct Node {
 };
 ```
 
-**The List Class**<br>
+## The List Class<br>
 In this class, we store the head of each object of class created and a temp variable to traversing the linked list.
 ```cpp
 class List:public Node{
@@ -20,7 +20,7 @@ class List:public Node{
 };
 ```
 
-**The Main Class**<br>
+## The Main Class<br>
 In the main class we can create as many objects of list class accouding to the number of Linked Lists we need.
 ```cpp
 int main(){
