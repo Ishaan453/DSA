@@ -80,6 +80,7 @@ and now we can call the create function in the main class<br>
 ```cpp
 int main(){
     List I;
+    I.create();
 }
 ```
 
