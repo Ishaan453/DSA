@@ -93,6 +93,7 @@ and now we can call the create function in the main class<br>
 int main(){
     List I;
     I.create();
+    I.display();
 }
 ```
 
