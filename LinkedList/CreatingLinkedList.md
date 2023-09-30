@@ -32,9 +32,9 @@ int main(){
 
 We have successfully created a **Node class**, from which we can create new nodes for our Linked List, A **List class** which will hold the head pointer of the list and an object. If we want to create _'n'_ linked lists, we can make _'n'_ ojects of the **List Class** or create an array of object.<br>
 
-## Create() Function<br>
+## Create() and Display() Functions<br>
 All the functions of the Linked List will come under the **List Class**.<br>
-We will first declare the function _create()_ in the List class and then define it outside with the help of _Scope Resolution (::)_ operator.<br>
+We will first declare the function _create()_ and _display()_ in the List class and then define it outside with the help of _Scope Resolution (::)_ operator.<br>
 
 ```cpp
 class List:public Node{
@@ -46,6 +46,7 @@ class List:public Node{
     }
 
     void create();
+    void display();
 };
 
 void List::create(){
@@ -71,6 +72,17 @@ void List::create(){
             temp = newnode;
         }
     }
+}
+
+void List::display(){
+    temp = listptr;
+
+    while(temp != NULL){
+        cout<<temp->data<<"->";
+        temp = temp->next;
+    }
+
+        cout<<"NULL";
 }
 
 ```
