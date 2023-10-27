@@ -28,7 +28,6 @@ class List:public Node{
     void deleteInBetween();
     void deleteStart();
     void deleteEnd();
-    void reverse();
     void concat(List obj);
 };
 
