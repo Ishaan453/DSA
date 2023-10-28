@@ -190,61 +190,114 @@ void tree::nonrec_postorder(){
 }
 
 void tree::deleteNode(int n){
-	Node *temp, *parent = NULL, *father, *r, *son;
-	temp = root;
-	while((temp->data != n) && temp != NULL){
-		if(n<temp->data){
-			parent = temp;
-			temp = temp->left;
+	Node *temp = root, *parent = NULL;
+	while(temp != NULL){
+		if(temp->data == n){
+			break;
 		}
 		else{
-			parent = temp;
-			temp = temp->right;
+			if(temp->data > n){
+				parent = temp;
+				temp = temp->left;
+			}
+			else{
+				parent = temp;
+				temp = temp->right;
+			}
 		}
 	}
 	if(temp == NULL){
-		cout<<"Number not found"<<endl;;
+		cout<<"Data not found"<<endl;
 		return;
 	}
-	if(temp->left == NULL){
-		r = temp->right;
-	}
-	else{
-		if(temp->right == NULL){
-			r = temp->left;
-		}
-		else{
-			father = temp;
-			r = temp->right;
-			son = r->left;
-			while(son != NULL){
-				father = r;
-				r = son;
-				son = r->left;
-			}
-			if( father != temp){
-				father->left = r->right;
-				r->right = temp->right;
-			}
-			r->left = temp->left;
-		}
+
+	if(temp->left == NULL && temp->right == NULL){
 		if(parent == NULL){
-			root = r;
+			root == NULL;
 		}
 		else{
-			if(temp == parent->left){
-				parent->left = r;
+			if(parent -> left == temp){
+				parent->left = NULL;
 			}
 			else{
-				parent->right = r;
+				parent->right = NULL;
 			}
 		}
-		
-		
+		delete temp;
+		return;
 	}
-	
-	delete temp;
-	return;
+
+	if(temp->left == NULL && temp->right != NULL){
+		if(parent == NULL){
+			root = temp->right;
+			delete temp;
+		}
+		else if(parent->left == temp){
+			parent->left = temp->right;
+		}
+		else{
+			parent->right = temp->right;
+		}
+		delete temp;
+		return;
+	}
+
+	if(temp->left != NULL && temp->right == NULL){
+		if(parent == NULL){
+			root = temp->left;
+			delete temp;
+		}
+		else if(parent->left == temp){
+			parent->left = temp->left;
+		}
+		else{
+			parent->right = temp->left;
+		}
+		delete temp;
+		return;
+	}
+
+	if(temp->left != NULL && temp->right != NULL){
+		Node *x, *y;
+		if(parent == NULL){
+			root = temp->left;
+			x = temp->left;
+			y = temp->right;
+
+			while(x->right != NULL){
+				x = x->right;
+			}
+			x->right = y;
+			delete temp;
+			return;
+		}
+		else if(parent->left == temp){
+			x = temp->left;
+			y = temp->right;
+			parent->left = x;
+
+			while(x->right != NULL){
+				x = x->right;
+			}
+			x->right = y;
+			delete temp;
+			return;
+		}
+		else{
+			x = temp->left;
+			y = temp->right;
+			parent->right = x;
+
+			while(x->right != NULL){
+				x = x->right;
+			}
+			x->right = y;
+			delete temp;
+			return;
+		}
+	}
+
+
 }
 
 
